@@ -16,12 +16,12 @@
 
         <div class="form-group">
           <label>Afdeling</label>
-          <input type="string" class="form-control" name="" value="">
+          <input type="string" class="form-control" name="" value="Esbjerg AMK">
         </div>
 
         <div class="form-group">
           <label>Supervisorer</label>
-          <input type="string" class="form-control" name="" value="">
+          <input type="string" class="form-control" name="" value="Gert Thomsen">
         </div>
 
         <div class="form-group">
@@ -79,7 +79,7 @@
             <option value="Kronisk">Kronisk</option>
             <option value="Recidiverende">Recidiverende</option>
           </select>
-          <button type="button" class="btn btn-primary">Tilføj Diagnose</button>
+          <button type="button" class="btn btn-dark">Tilføj Diagnose</button>
           <button type="button" class="btn btn-secondary">Ryd</button>
         </div>
       </div>
@@ -87,16 +87,19 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Bedømmelse af supervisor</label>
-          <input type="integer" class="form-control" name="" value="">
+          <input type="integer" class="form-control" name="" value="000000000">
         </div>
 
         <div class="form-group">
           <label>Supervisors bedømmelse</label>
-          <input type="integer" class="form-control" name="" value="">
+          <input type="integer" class="form-control" name="" value="0000000000">
         </div>
 
         <p>...svarende til scoren 0-9 for hver linie (0='Ikke obs.')</p>
         <p>Eksemplet herunder skal indtastes som '355600000'</p>
+
+        <button type="submit" class="btn btn-primary">Tilføj MiniCEX</button>
+
       </div>
 
     </div>
