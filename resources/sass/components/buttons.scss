@@ -1,0 +1,8 @@
+//Primary Button Custom
+.btn-primary {
+    @include button-variant($orange, darken($orange, 7.5%), darken($orange, 10%), lighten($orange,5%), lighten($orange, 10%), darken($orange,20%));
+}
+
+.btn-outline-primary {
+    @include button-outline-variant($orange, darken($orange,4%), lighten($orange,5%), $orange);
+}

@@ -13,7 +13,7 @@
   --purple: #9561e2;
   --pink: #f66d9b;
   --red: #e3342f;
-  --orange: #f6993f;
+  --orange: #C75B3A;
   --yellow: #ffed4a;
   --green: #38c172;
   --teal: #4dc0b5;
@@ -10642,5 +10642,97 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #C75B3A;
+  border-color: #aa4d30;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #a0482e;
+  border-color: #cd6c4e;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(183, 104, 79, 0.5);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #C75B3A;
+  border-color: #aa4d30;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #d27c62;
+  border-color: #793722;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(183, 104, 79, 0.5);
+}
+
+.btn-outline-primary {
+  color: #C75B3A;
+  border-color: #C75B3A;
+}
+
+.btn-outline-primary:hover {
+  color: #b85334;
+  background-color: #cd6c4e;
+  border-color: #C75B3A;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(199, 91, 58, 0.5);
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: #C75B3A;
+  background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #cd6c4e;
+  border-color: #C75B3A;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(199, 91, 58, 0.5);
+}
+
+#app {
+  flex: 1 0 auto;
+}
+
+html,
+body {
+  background-color: #F5F8FA;
+  color: #636b6f;
+  font-family: "Raleway", sans-serif;
+  font-weight: 200;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.18);
 }
 
