@@ -23,6 +23,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $activities = [
+          'Anamnese (ny pt)',
+          'Undersøgelse (ny pt)',
+          'Paraklinisk svar',
+          'Anden opfølgende kontrol',
+          'Konference (kirurg, ect)',
+          'Sygeplejerske overdragelse',
+          'FV overdragelse',
+          'Journalisering, henvisning m.m.',
+          'Ingen aktivitet',
+          'Behandling (f.eks SMT)'
+        ];
+
+        return view('home', compact('activities'));
     }
 }

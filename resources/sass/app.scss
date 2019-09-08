@@ -9,15 +9,16 @@
 
 // Components
 @import 'components/buttons';
+@import 'components/frontpage';
+@import 'components/bootstrap-datepicker.min';
 
 #app {
   flex: 1 0 auto;
 }
 
 html, body {
-    background-color: #F5F8FA;
     color: #636b6f;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 200;
     height: 100vh;
     margin: 0;
