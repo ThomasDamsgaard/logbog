@@ -9,9 +9,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Dato</label>
-          <div class="input-group date" data-provide="datepicker">
-            <input type="text" class="form-control" data-date-format="dd-mm-yyyy" value="{{ Carbon\Carbon::now()->format('d-m-Y') }}">
-          </div>
+          <input class="form-control" data-provide="datepicker" value="{{ Carbon\Carbon::now()->format('d-m-Y') }}">
         </div>
 
         <div class="form-group">
