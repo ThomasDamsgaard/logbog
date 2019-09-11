@@ -10,7 +10,8 @@
 // Components
 @import 'components/buttons';
 @import 'components/frontpage';
-@import 'components/bootstrap-datepicker3.min';
+@import 'dependencies/bootstrap-datepicker3.min';
+@import 'dependencies/nouislider.min';
 
 #app {
   flex: 1 0 auto;

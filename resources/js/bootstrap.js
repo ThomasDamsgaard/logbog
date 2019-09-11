@@ -53,3 +53,6 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+window.noUiSlider = require('noUiSlider');
+window.wNumb = require('wNumb');

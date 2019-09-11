@@ -1,5 +1,29 @@
 @extends('layouts.app')
 
+@section('css')
+  <style media="screen">
+  .noUi-value {
+    color: #636b6f;
+  }
+  .noUi-value-sub {
+    color: #636b6f;
+    font-size: 10px;
+  }
+
+  .noUi-marker-sub {
+    background: #636b6f;
+  }
+
+  .noUi-marker-large {
+    background: #636b6f;
+  }
+
+  .noUi-pips-horizontal {
+    padding: 0px;
+  }
+  </style>
+@endsection
+
 @section('content')
 <form action="" method="POST">
   <div class="container py-4">
@@ -46,9 +70,9 @@
       </div>
 
       <div class="col-md-4">
-        <div class="form-group">
-          <label>Afdeling</label>
-          <input type="string" class="form-control" name="" value="">
+        <div class="form-group" style="margin-bottom: 2.2rem;">
+          <label>Patient Alder</label>
+          <div id="slider"></div>
         </div>
 
         <div class="form-group">
@@ -118,6 +142,26 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script type="text/javascript">
   $(document).ready(function() {
+
+    var slider = document.getElementById('slider');
+
+noUiSlider.create(slider, {
+    start: [50],
+    step: 10,
+    range: {
+        'min': [0],
+        'max': [100]
+    },
+    // tooltips: true,
+    format: wNumb({
+        decimals: 0
+    }),
+    pips: {
+        mode: 'steps',
+        stepped: true,
+        density: 2
+    }
+});
 
   $('select[name="department"]').on('change', function(){
       var id = $(this).val();
