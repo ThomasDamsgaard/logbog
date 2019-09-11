@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Department;
+use App\Supervisor;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Fecth all departments
+        $departments = Department::all();
+
+        // Fetch supervisors associated with the first department record
+        $supervisors = Supervisor::where('department_id', '=', '1')->get();
+
         $activities = [
           'Anamnese (ny pt)',
           'Undersøgelse (ny pt)',
@@ -36,6 +44,13 @@ class HomeController extends Controller
           'Behandling (f.eks SMT)'
         ];
 
-        return view('home', compact('activities'));
+        return view('home', compact('activities', 'departments', 'supervisors'));
+    }
+
+    public function getSupervisors($id)
+    {
+      $supervisors = Supervisor::where('department_id', $id)->pluck('name', 'id');
+
+      return json_encode($supervisors);
     }
 }

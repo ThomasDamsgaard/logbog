@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateParametersTable extends Migration
+class CreateSupervisorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateParametersTable extends Migration
      */
     public function up()
     {
-        Schema::create('parameters', function (Blueprint $table) {
+        Schema::create('supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('parameters');
+            $table->integer('department_id');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateParametersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parameters');
+        Schema::dropIfExists('supervisors');
     }
 }

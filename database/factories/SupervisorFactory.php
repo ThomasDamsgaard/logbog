@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Parameters;
+use App\Supervisor;
 use Faker\Generator as Faker;
 
-$factory->define(Parameters::class, function (Faker $faker) {
+$factory->define(Supervisor::class, function (Faker $faker) {
     return [
         //
     ];

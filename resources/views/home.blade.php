@@ -14,12 +14,20 @@
 
         <div class="form-group">
           <label>Afdeling</label>
-          <input type="string" class="form-control" name="" value="Esbjerg AMK">
+          <select class="form-control" name="department" data-dependent="supervisor">
+            @foreach ($departments as $department)
+              <option value="{{ $department->id }}">{{ $department->departments }}</option>
+            @endforeach
+          </select>
         </div>
 
         <div class="form-group">
           <label>Supervisorer</label>
-          <input type="string" class="form-control" name="" value="Gert Thomsen">
+          <select id="supervisor" class="form-control" name="supervisor">
+            @foreach ($supervisors as $supervisor)
+              <option value="{{ $supervisor->name }}">{{ $supervisor->name }}</option>
+            @endforeach
+          </select>
         </div>
 
         <div class="form-group">
@@ -28,7 +36,7 @@
           @foreach ($activities as $activity)
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="activities[]">
-              <label class="form-check-label" for="defaultCheck1">
+              <label class="form-check-label">
                 {{ $activity }}
               </label>
             </div>
@@ -104,4 +112,38 @@
   </div>
 </form>
 
+@endsection
+
+@section('javascript')
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+  $('select[name="department"]').on('change', function(){
+      var id = $(this).val();
+      if(id) {
+          $.ajax({
+              url: '/supervisors/get/'+id,
+              type:"GET",
+              dataType:"json",
+
+              success:function(data) {
+
+                  $('select[name="supervisor"]').empty();
+
+                  $.each(data, function(key, value){
+
+                      $('select[name="supervisor"]').append('<option value="'+ value +'">' + value + '</option>');
+
+                  });
+              }
+          });
+      } else {
+          $('select[name="state"]').empty();
+      }
+
+  });
+
+});
+  </script>
 @endsection
