@@ -7,6 +7,7 @@ use App\Department;
 use App\Supervisor;
 use App\Activity;
 use App\Complaint;
+use App\Diagnosis;
 
 class HomeController extends Controller
 {
@@ -37,11 +38,14 @@ class HomeController extends Controller
 
         $complaints = Complaint::all();
 
+        $diagnoses = Diagnosis::all();
+
         return view('home', compact(
           'departments',
           'supervisors',
           'activities',
-          'complaints'
+          'complaints',
+          'diagnoses'
         ));
     }
 

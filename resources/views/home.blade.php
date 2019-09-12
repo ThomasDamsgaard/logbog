@@ -87,9 +87,9 @@
         <div class="form-group">
           <label>Diagnosekode</label>
           <select class="form-control mb-2">
-            <option value="Akut/Subakut">DM545 - Lændesmerter UNS</option>
-            <option value="Kronisk">Kronisk</option>
-            <option value="Recidiverende">Recidiverende</option>
+            @foreach ($diagnoses as $diagnosis)
+              <option value="{{ $diagnosis->diagnosis }}">{{ $diagnosis->diagnosis }}</option>
+            @endforeach
           </select>
           <button type="button" class="btn btn-dark">Tilføj Diagnose</button>
           <button type="button" class="btn btn-secondary">Ryd</button>
@@ -99,12 +99,12 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Bedømmelse af supervisor</label>
-          <input type="integer" class="form-control" name="" value="000000000">
+          <input type="integer" class="form-control" name="" value="00000000">
         </div>
 
         <div class="form-group">
           <label>Supervisors bedømmelse</label>
-          <input type="integer" class="form-control" name="" value="0000000000">
+          <input type="integer" class="form-control" name="" value="000000000">
         </div>
 
         <p>...svarende til scoren 0-9 for hver linie (0='Ikke obs.')</p>
