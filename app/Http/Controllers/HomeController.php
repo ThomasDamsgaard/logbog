@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Department;
 use App\Supervisor;
 use App\Activity;
+use App\Complaint;
 
 class HomeController extends Controller
 {
@@ -34,10 +35,13 @@ class HomeController extends Controller
 
         $activities = Activity::all();
 
+        $complaints = Complaint::all();
+
         return view('home', compact(
-          'departments', 
+          'departments',
           'supervisors',
           'activities',
+          'complaints'
         ));
     }
 

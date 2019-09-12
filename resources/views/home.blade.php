@@ -78,9 +78,9 @@
         <div class="form-group">
           <label>Primær klage</label>
           <select class="form-control">
-            <option value="Akut/Subakut">Lænderyg</option>
-            <option value="Kronisk">Kronisk</option>
-            <option value="Recidiverende">Recidiverende</option>
+            @foreach ($complaints as $complaint)
+              <option value="{{ $complaint->complaint }}">{{ $complaint->complaint }}</option>
+            @endforeach
           </select>
         </div>
 
