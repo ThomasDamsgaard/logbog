@@ -10644,95 +10644,6 @@ a.text-dark:focus {
   }
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #C75B3A;
-  border-color: #aa4d30;
-}
-
-.btn-primary:hover {
-  color: #fff;
-  background-color: #a0482e;
-  border-color: #cd6c4e;
-}
-
-.btn-primary:focus,
-.btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(183, 104, 79, 0.5);
-}
-
-.btn-primary.disabled,
-.btn-primary:disabled {
-  color: #fff;
-  background-color: #C75B3A;
-  border-color: #aa4d30;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active,
-.btn-primary:not(:disabled):not(.disabled).active,
-.show > .btn-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #d27c62;
-  border-color: #793722;
-}
-
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(183, 104, 79, 0.5);
-}
-
-.btn-outline-primary {
-  color: #C75B3A;
-  border-color: #C75B3A;
-}
-
-.btn-outline-primary:hover {
-  color: #b85334;
-  background-color: #cd6c4e;
-  border-color: #C75B3A;
-}
-
-.btn-outline-primary:focus,
-.btn-outline-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(199, 91, 58, 0.5);
-}
-
-.btn-outline-primary.disabled,
-.btn-outline-primary:disabled {
-  color: #C75B3A;
-  background-color: transparent;
-}
-
-.btn-outline-primary:not(:disabled):not(.disabled):active,
-.btn-outline-primary:not(:disabled):not(.disabled).active,
-.show > .btn-outline-primary.dropdown-toggle {
-  color: #fff;
-  background-color: #cd6c4e;
-  border-color: #C75B3A;
-}
-
-.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
-.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(199, 91, 58, 0.5);
-}
-
-.masthead {
-  height: 100vh;
-  min-height: 500px;
-  background: #e6e7e1;
-  background: linear-gradient(to bottom, #e6e7e1 0%, #eeefea 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#e6e7e1", endColorstr="#eeefea",GradientType=0 );
-}
-
-.form-signin {
-  width: 100%;
-  max-width: 420px;
-  padding: 15px;
-  margin: auto;
-}
-
 /*!
  * Datepicker for Bootstrap v1.9.0 (https://github.com/uxsolutions/bootstrap-datepicker)
  *
@@ -11813,6 +11724,116 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   transform: translate(0, -50%);
   top: 50%;
   right: 120%;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #C75B3A;
+  border-color: #aa4d30;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #a0482e;
+  border-color: #cd6c4e;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(183, 104, 79, 0.5);
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #C75B3A;
+  border-color: #aa4d30;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #d27c62;
+  border-color: #793722;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(183, 104, 79, 0.5);
+}
+
+.btn-outline-primary {
+  color: #C75B3A;
+  border-color: #C75B3A;
+}
+
+.btn-outline-primary:hover {
+  color: #b85334;
+  background-color: #cd6c4e;
+  border-color: #C75B3A;
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary.focus {
+  box-shadow: 0 0 0 0.2rem rgba(199, 91, 58, 0.5);
+}
+
+.btn-outline-primary.disabled,
+.btn-outline-primary:disabled {
+  color: #C75B3A;
+  background-color: transparent;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #cd6c4e;
+  border-color: #C75B3A;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(199, 91, 58, 0.5);
+}
+
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background: #e6e7e1;
+  background: linear-gradient(to bottom, #e6e7e1 0%, #eeefea 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#e6e7e1", endColorstr="#eeefea",GradientType=0 );
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 420px;
+  padding: 15px;
+  margin: auto;
+}
+
+.noUi-value {
+  color: #636b6f;
+}
+
+.noUi-value-sub {
+  color: #636b6f;
+  font-size: 10px;
+}
+
+.noUi-marker-sub {
+  background: #636b6f;
+}
+
+.noUi-marker-large {
+  background: #636b6f;
+}
+
+.noUi-pips-horizontal {
+  padding: 0px;
 }
 
 #app {

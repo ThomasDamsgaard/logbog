@@ -2,25 +2,7 @@
 
 @section('css')
   <style media="screen">
-  .noUi-value {
-    color: #636b6f;
-  }
-  .noUi-value-sub {
-    color: #636b6f;
-    font-size: 10px;
-  }
 
-  .noUi-marker-sub {
-    background: #636b6f;
-  }
-
-  .noUi-marker-large {
-    background: #636b6f;
-  }
-
-  .noUi-pips-horizontal {
-    padding: 0px;
-  }
   </style>
 @endsection
 
@@ -139,54 +121,13 @@
 @endsection
 
 @section('javascript')
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> --}}
   <script type="text/javascript">
   $(document).ready(function() {
 
-    var slider = document.getElementById('slider');
 
-noUiSlider.create(slider, {
-    start: [50],
-    step: 10,
-    range: {
-        'min': [0],
-        'max': [100]
-    },
-    // tooltips: true,
-    format: wNumb({
-        decimals: 0
-    }),
-    pips: {
-        mode: 'steps',
-        stepped: true,
-        density: 2
-    }
-});
 
-  $('select[name="department"]').on('change', function(){
-      var id = $(this).val();
-      if(id) {
-          $.ajax({
-              url: '/supervisors/get/'+id,
-              type:"GET",
-              dataType:"json",
 
-              success:function(data) {
-
-                  $('select[name="supervisor"]').empty();
-
-                  $.each(data, function(key, value){
-
-                      $('select[name="supervisor"]').append('<option value="'+ value +'">' + value + '</option>');
-
-                  });
-              }
-          });
-      } else {
-          $('select[name="state"]').empty();
-      }
-
-  });
 
 });
   </script>

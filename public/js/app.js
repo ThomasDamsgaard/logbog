@@ -39756,6 +39756,10 @@ __webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/
 
 __webpack_require__(/*! ./components/datepicker */ "./resources/js/components/datepicker.js");
 
+__webpack_require__(/*! ./components/nouislider */ "./resources/js/components/nouislider.js");
+
+__webpack_require__(/*! ./components/dynamic-dropdown */ "./resources/js/components/dynamic-dropdown.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -39832,6 +39836,63 @@ $.fn.datepicker.defaults.weekStart = 1;
 $.fn.datepicker.defaults.daysOfWeekDisabled = [0, 6];
 $.fn.datepicker.defaults.autoclose = true;
 $('.datepicker').datepicker();
+
+/***/ }),
+
+/***/ "./resources/js/components/dynamic-dropdown.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/dynamic-dropdown.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('select[name="department"]').on('change', function () {
+  var id = $(this).val();
+
+  if (id) {
+    $.ajax({
+      url: '/supervisors/get/' + id,
+      type: "GET",
+      dataType: "json",
+      success: function success(data) {
+        $('select[name="supervisor"]').empty();
+        $.each(data, function (key, value) {
+          $('select[name="supervisor"]').append('<option value="' + value + '">' + value + '</option>');
+        });
+      }
+    });
+  } else {
+    $('select[name="state"]').empty();
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/nouislider.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/nouislider.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var slider = document.getElementById('slider');
+noUiSlider.create(slider, {
+  start: [50],
+  step: 10,
+  range: {
+    'min': [0],
+    'max': [100]
+  },
+  // tooltips: true,
+  format: wNumb({
+    decimals: 0
+  }),
+  pips: {
+    mode: 'steps',
+    stepped: true,
+    density: 2
+  }
+});
 
 /***/ }),
 
