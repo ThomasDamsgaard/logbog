@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Department;
 use App\Supervisor;
+use App\Activity;
 
 class HomeController extends Controller
 {
@@ -31,20 +32,13 @@ class HomeController extends Controller
         // Fetch supervisors associated with the first department record
         $supervisors = Supervisor::where('department_id', '=', '1')->get();
 
-        $activities = [
-          'Anamnese (ny pt)',
-          'Undersøgelse (ny pt)',
-          'Paraklinisk svar',
-          'Anden opfølgende kontrol',
-          'Konference (kirurg, ect)',
-          'Sygeplejerske overdragelse',
-          'FV overdragelse',
-          'Journalisering, henvisning m.m.',
-          'Ingen aktivitet',
-          'Behandling (f.eks SMT)'
-        ];
+        $activities = Activity::all();
 
-        return view('home', compact('activities', 'departments', 'supervisors'));
+        return view('home', compact(
+          'departments', 
+          'supervisors',
+          'activities',
+        ));
     }
 
     public function getSupervisors($id)
