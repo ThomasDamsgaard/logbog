@@ -99,16 +99,18 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Bedømmelse af supervisor</label>
-          <input type="integer" class="form-control" name="" pattern="[0-9]{8}" placeholder="00000000">
+          <input type="text" class="form-control" name="" pattern="[0-9]{8}" placeholder="00000000">
         </div>
 
         <div class="form-group">
           <label>Supervisors bedømmelse</label>
-          <input type="integer" class="form-control" name="" pattern="[0-9]{9}" placeholder="000000000">
+          <input type="text" class="form-control" name="" pattern="[0-9]{9}" placeholder="000000000">
         </div>
 
         <p>...svarende til scoren 0-9 for hver linie (0='Ikke obs.')</p>
         <p>Eksemplet herunder skal indtastes som '355600000'</p>
+
+        <img src="{{ asset('img/miniCEX.png') }}" class="img-fluid mb-3" style="max-width: 75%;"alt="MiniCEX">
 
         <button type="submit" class="btn btn-primary">Tilføj MiniCEX</button>
 
