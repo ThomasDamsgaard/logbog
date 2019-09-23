@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<form action="" method="POST">
+<form action="{{ route('minicex.store') }}" method="POST">
   <div class="container py-4">
     <div class="row justify-content-center">
       @csrf
@@ -15,14 +15,14 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Dato</label>
-          <input class="form-control" data-provide="datepicker" value="{{ Carbon\Carbon::now()->format('d-m-Y') }}">
+          <input class="form-control" name="date" data-provide="datepicker" value="{{ Carbon\Carbon::now()->format('d-m-Y') }}">
         </div>
 
         <div class="form-group">
           <label>Afdeling</label>
           <select class="form-control" name="department" data-dependent="supervisor">
             @foreach ($departments as $department)
-              <option value="{{ $department->id }}">{{ $department->departments }}</option>
+              <option value="{{ $department->id }}|{{ $department->departments }}">{{ $department->departments }}</option>
             @endforeach
           </select>
         </div>
@@ -41,7 +41,7 @@
 
           @foreach ($activities as $activity)
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="activities[]">
+              <input class="form-check-input" type="checkbox" name="activities[]" value="{{ $activity->activities }}">
               <label class="form-check-label">
                 {{ $activity->activities }}
               </label>
@@ -55,11 +55,12 @@
         <div class="form-group" style="margin-bottom: 2.2rem;">
           <label>Patient Alder</label>
           <div id="slider"></div>
+          <input id="age" type="hidden" name="age" value="50">
         </div>
 
         <div class="form-group">
           <label>Patient køn</label>
-          <select class="form-control">
+          <select class="form-control" name="sex">
             <option value="Mand">Mand</option>
             <option value="Kvinde">Kvinde</option>
             <option value="Andet">Andet</option>
@@ -68,7 +69,7 @@
 
         <div class="form-group">
           <label>Varighed</label>
-          <select class="form-control">
+          <select class="form-control" name="duration">
             <option value="Akut/Subakut">Akut/Subakut</option>
             <option value="Kronisk">Kronisk</option>
             <option value="Recidiverende">Recidiverende</option>
@@ -77,7 +78,7 @@
 
         <div class="form-group">
           <label>Primær klage</label>
-          <select class="form-control">
+          <select class="form-control" name="complaint">
             @foreach ($complaints as $complaint)
               <option value="{{ $complaint->complaint }}">{{ $complaint->complaint }}</option>
             @endforeach
@@ -86,11 +87,12 @@
 
         <div class="form-group">
           <label>Diagnosekode</label>
-          <select class="form-control mb-2">
+          <select class="form-control mb-2" name="diagnosis[]">
             @foreach ($diagnoses as $diagnosis)
               <option value="{{ $diagnosis->diagnosis }}">{{ $diagnosis->diagnosis }}</option>
             @endforeach
           </select>
+          {{-- <input type="hidden" name="diagnosis[]" value=""> --}}
           <button type="button" class="btn btn-dark">Tilføj Diagnose</button>
           <button type="button" class="btn btn-secondary">Ryd</button>
         </div>
@@ -99,12 +101,12 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Bedømmelse af supervisor</label>
-          <input type="text" class="form-control" name="" pattern="[0-9]{8}" placeholder="00000000">
+          <input type="text" class="form-control" name="studentrating" pattern="[0-9]{8}" placeholder="00000000" required>
         </div>
 
         <div class="form-group">
           <label>Supervisors bedømmelse</label>
-          <input type="text" class="form-control" name="" pattern="[0-9]{9}" placeholder="000000000">
+          <input type="text" class="form-control" name="supervisorrating" pattern="[0-9]{9}" placeholder="000000000" required>
         </div>
 
         <p>...svarende til scoren 0-9 for hver linie (0='Ikke obs.')</p>
@@ -123,14 +125,11 @@
 @endsection
 
 @section('javascript')
-  {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> --}}
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script type="text/javascript">
   $(document).ready(function() {
 
 
-
-
-
-});
+  });
   </script>
 @endsection

@@ -1,4 +1,5 @@
 const slider = document.getElementById('slider');
+const age = document.getElementById('age');
 
 noUiSlider.create(slider, {
   start: [50],
@@ -12,10 +13,14 @@ noUiSlider.create(slider, {
   format: wNumb({
     decimals: 0
   }),
-  
+
   pips: {
   mode: 'steps',
   stepped: true,
   density: 2
   }
+});
+
+slider.noUiSlider.on('update', (value) => {
+  age.value = value;
 });

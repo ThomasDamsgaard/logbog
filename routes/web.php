@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Dynamic supervisor call
 Route::get('/supervisors/get/{id}', 'HomeController@getSupervisors');
+
+//Save a MiniCEX to the database
+Route::post('/minicex', 'MiniCEXController@store')->name('minicex.store');

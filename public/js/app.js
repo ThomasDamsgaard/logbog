@@ -39847,7 +39847,8 @@ $('.datepicker').datepicker();
 /***/ (function(module, exports) {
 
 $('select[name="department"]').on('change', function () {
-  var id = $(this).val();
+  var id = $(this).val().split('|', 1);
+  console.log(id[0]);
 
   if (id) {
     $.ajax({
@@ -39862,7 +39863,7 @@ $('select[name="department"]').on('change', function () {
       }
     });
   } else {
-    $('select[name="state"]').empty();
+    $('select[name="supervisor"]').append('<option value="">Fejl</option>');
   }
 });
 
@@ -39876,6 +39877,7 @@ $('select[name="department"]').on('change', function () {
 /***/ (function(module, exports) {
 
 var slider = document.getElementById('slider');
+var age = document.getElementById('age');
 noUiSlider.create(slider, {
   start: [50],
   step: 10,
@@ -39892,6 +39894,9 @@ noUiSlider.create(slider, {
     stepped: true,
     density: 2
   }
+});
+slider.noUiSlider.on('update', function (value) {
+  age.value = value;
 });
 
 /***/ }),

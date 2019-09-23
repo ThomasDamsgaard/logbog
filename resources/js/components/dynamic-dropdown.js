@@ -1,8 +1,9 @@
 $('select[name="department"]').on('change', function(){
-  var id = $(this).val();
+  const id = $(this).val().split('|', 1);
+  console.log(id[0]);
   if(id) {
     $.ajax({
-      url: '/supervisors/get/'+id,
+      url: '/supervisors/get/'+ id,
       type:"GET",
       dataType:"json",
       success:function(data) {
@@ -13,6 +14,6 @@ $('select[name="department"]').on('change', function(){
       }
     });
   } else {
-    $('select[name="state"]').empty();
+    $('select[name="supervisor"]').append('<option value="">Fejl</option>');
   }
 });

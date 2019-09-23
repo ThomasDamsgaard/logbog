@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * MiniCEX's belongs to User
+     */
+    public function minicexes()
+    {
+        return $this->hasMany('App\MiniCEX');
+    }
 }
