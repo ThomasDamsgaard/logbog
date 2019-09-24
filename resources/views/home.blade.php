@@ -87,13 +87,13 @@
 
         <div class="form-group">
           <label>Diagnosekode</label>
-          <select class="form-control mb-2" name="diagnosis[]">
+          <select id="selected" class="form-control mb-2">
             @foreach ($diagnoses as $diagnosis)
               <option value="{{ $diagnosis->diagnosis }}">{{ $diagnosis->diagnosis }}</option>
             @endforeach
           </select>
-          {{-- <input type="hidden" name="diagnosis[]" value=""> --}}
-          <button type="button" class="btn btn-dark">Tilføj Diagnose</button>
+          <input id="input-diagnosis"type="hidden" name="diagnosis" value="">
+          <button id="add-diagnosis" type="button" class="btn btn-dark">Tilføj Diagnose</button>
           <button type="button" class="btn btn-secondary">Ryd</button>
         </div>
       </div>
@@ -128,6 +128,22 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script type="text/javascript">
   $(document).ready(function() {
+    const input = document.querySelector('#input-diagnosis');
+    const addDiagnosisButton = document.querySelector('#add-diagnosis');
+    const selected = document.querySelector('#selected');
+    const submitButton = document.querySelector('button[type=submit]');
+    let diagnoses = [];
+
+    addDiagnosisButton.addEventListener('click', () => {
+      selectedDiagnoses(selected);
+      input.value = diagnoses;
+      console.log(diagnoses);
+    });
+
+    function selectedDiagnoses(selected) {
+      let value = selected.options[selected.selectedIndex].value;
+      diagnoses.push(value);
+    }
 
 
   });

@@ -28,7 +28,9 @@ class MiniCEXController extends Controller
 
       //Grade exctraction
       $rating = str_split($request->supervisorrating, 1);
-      // dd($request->age);
+
+      //Diagnoses split to array
+      $diagnoses = explode(',', $request->diagnosis);
 
       $minicex = new MiniCEX;
 
@@ -39,7 +41,7 @@ class MiniCEXController extends Controller
       $minicex->sex = $request->sex;
       $minicex->complaint = $request->complaint;
       $minicex->duration = $request->duration;
-      $minicex->diagnosis = $request->diagnosis;
+      $minicex->diagnosis = $diagnoses;
       $minicex->grade1 = $rating[0];
       $minicex->grade2 = $rating[1];
       $minicex->grade3 = $rating[2];
@@ -55,6 +57,6 @@ class MiniCEXController extends Controller
 
       $minicex->save();
 
-      return redirect('/home');
+      return redirect()->back()->with('success', 'MiniCEX er gemt');
     }
 }
