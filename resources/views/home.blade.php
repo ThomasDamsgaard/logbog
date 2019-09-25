@@ -12,6 +12,7 @@
     <div class="row justify-content-center">
       @csrf
 
+      {{-- Div 1 --}}
       <div class="col-md-4">
         <div class="form-group">
           <label>Dato</label>
@@ -50,7 +51,9 @@
 
         </div>
       </div>
+      {{-- Div 1 --}}
 
+      {{-- Div 2 --}}
       <div class="col-md-4">
         <div class="form-group" style="margin-bottom: 2.2rem;">
           <label>Patient Alder</label>
@@ -96,8 +99,15 @@
           <button id="add-diagnosis" type="button" class="btn btn-dark">Tilføj Diagnose</button>
           <button type="button" class="btn btn-secondary">Ryd</button>
         </div>
-      </div>
 
+        {{-- Diagnoses list --}}
+        <ul id="diagnoses-list"></ul>
+        {{-- Diagnoses list --}}
+
+      </div>
+      {{-- Div 2 --}}
+
+      {{-- Div 3 --}}
       <div class="col-md-4">
         <div class="form-group">
           <label>Bedømmelse af supervisor</label>
@@ -117,6 +127,7 @@
         <button type="submit" class="btn btn-primary">Tilføj MiniCEX</button>
 
       </div>
+      {{-- Div 3 --}}
 
     </div>
   </div>
@@ -131,17 +142,29 @@
     const addDiagnosisButton = document.querySelector('#add-diagnosis');
     const selected = document.querySelector('#selected');
     const submitButton = document.querySelector('button[type=submit]');
+    const diagnosesList = document.querySelector('#diagnoses-list');
     let diagnoses = [];
 
     addDiagnosisButton.addEventListener('click', () => {
       selectedDiagnoses(selected);
       input.value = diagnoses;
-      console.log(diagnoses);
+
+      diagnosesList.innerHTML = '';
+      updateDiagnosesList();
+      // console.log(diagnoses);
     });
 
     function selectedDiagnoses(selected) {
       let value = selected.options[selected.selectedIndex].value;
       diagnoses.push(value);
+    }
+
+    function updateDiagnosesList() {
+      diagnoses.forEach((diagnose) => {
+        const listElement = document.createElement('li');
+        listElement.innerText = diagnose;
+        diagnosesList.appendChild(listElement);
+      });
     }
 
 
