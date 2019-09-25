@@ -97,7 +97,7 @@
           </select>
           <input id="input-diagnosis"type="hidden" name="diagnosis" value="">
           <button id="add-diagnosis" type="button" class="btn btn-dark">Tilføj Diagnose</button>
-          <button type="button" class="btn btn-secondary">Ryd</button>
+          <button id="remove-diagnosis" type="button" class="btn btn-secondary">Ryd</button>
         </div>
 
         {{-- Diagnoses list --}}
@@ -140,6 +140,7 @@
   $(document).ready(function() {
     const input = document.querySelector('#input-diagnosis');
     const addDiagnosisButton = document.querySelector('#add-diagnosis');
+    const removeDiagnosisButton = document.querySelector('#remove-diagnosis');
     const selected = document.querySelector('#selected');
     const submitButton = document.querySelector('button[type=submit]');
     const diagnosesList = document.querySelector('#diagnoses-list');
@@ -151,7 +152,14 @@
 
       diagnosesList.innerHTML = '';
       updateDiagnosesList();
-      // console.log(diagnoses);
+      console.log(diagnoses);
+    });
+
+    removeDiagnosisButton.addEventListener('click', () => {
+      diagnoses = [];
+      diagnosesList.innerHTML = '';
+
+      console.log(diagnoses);
     });
 
     function selectedDiagnoses(selected) {
@@ -167,6 +175,10 @@
       });
     }
 
+    // function clearDiagnosesList() {
+    //   diagnosesList = [];
+    //   console.log(diagnosesList);
+    // }
 
   });
   </script>
