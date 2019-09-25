@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('css')
-  <style media="screen">
-
-  </style>
-@endsection
-
 @section('content')
 <form action="{{ route('minicex.store') }}" method="POST">
   <div class="container py-4">
@@ -124,7 +118,7 @@
 
         <img src="{{ asset('img/miniCEX.png') }}" class="img-fluid mb-3" style="max-width: 75%;"alt="MiniCEX">
 
-        <button type="submit" class="btn btn-primary">Tilføj MiniCEX</button>
+        <button type="submit" class="btn btn-primary" style="display: none;">Tilføj MiniCEX</button>
 
       </div>
       {{-- Div 3 --}}
@@ -138,48 +132,6 @@
 @section('javascript')
   <script type="text/javascript">
   $(document).ready(function() {
-    const input = document.querySelector('#input-diagnosis');
-    const addDiagnosisButton = document.querySelector('#add-diagnosis');
-    const removeDiagnosisButton = document.querySelector('#remove-diagnosis');
-    const selected = document.querySelector('#selected');
-    const submitButton = document.querySelector('button[type=submit]');
-    const diagnosesList = document.querySelector('#diagnoses-list');
-    let diagnoses = [];
-
-    addDiagnosisButton.addEventListener('click', () => {
-      selectedDiagnoses(selected);
-      input.value = diagnoses;
-
-      diagnosesList.innerHTML = '';
-      updateDiagnosesList();
-      console.log(diagnoses);
-    });
-
-    removeDiagnosisButton.addEventListener('click', () => {
-      diagnoses = [];
-      diagnosesList.innerHTML = '';
-
-      console.log(diagnoses);
-    });
-
-    function selectedDiagnoses(selected) {
-      let value = selected.options[selected.selectedIndex].value;
-      diagnoses.push(value);
-    }
-
-    function updateDiagnosesList() {
-      diagnoses.forEach((diagnose) => {
-        const listElement = document.createElement('li');
-        listElement.innerText = diagnose;
-        diagnosesList.appendChild(listElement);
-      });
-    }
-
-    // function clearDiagnosesList() {
-    //   diagnosesList = [];
-    //   console.log(diagnosesList);
-    // }
-
   });
   </script>
 @endsection

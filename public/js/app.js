@@ -39752,13 +39752,12 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/js/dependencies/bootstrap-datepicker.min.js");
+__webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/js/dependencies/bootstrap-datepicker.min.js"); // require('./components/datepicker');
+// require('./components/nouislider');
+// require('./components/dynamic-dropdown');
 
-__webpack_require__(/*! ./components/datepicker */ "./resources/js/components/datepicker.js");
 
-__webpack_require__(/*! ./components/nouislider */ "./resources/js/components/nouislider.js");
-
-__webpack_require__(/*! ./components/dynamic-dropdown */ "./resources/js/components/dynamic-dropdown.js");
+__webpack_require__(/*! ./components/form */ "./resources/js/components/form.js");
 
 /***/ }),
 
@@ -39824,31 +39823,34 @@ window.wNumb = __webpack_require__(/*! wNumb */ "./node_modules/wNumb/wNumb.js")
 
 /***/ }),
 
-/***/ "./resources/js/components/datepicker.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/datepicker.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/form.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/form.js ***!
+  \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+var input = document.querySelector('#input-diagnosis');
+var addDiagnosisButton = document.querySelector('#add-diagnosis');
+var removeDiagnosisButton = document.querySelector('#remove-diagnosis');
+var selected = document.querySelector('#selected');
+var submitButton = document.querySelector('button[type=submit]');
+var diagnosesList = document.querySelector('#diagnoses-list');
+var checkboxes = document.querySelectorAll('input[type=checkbox]');
+var slider = document.getElementById('slider');
+var age = document.getElementById('age');
+var checked = false;
+var diagnoses = []; //Datepicker
 
 $.fn.datepicker.defaults.format = "dd-mm-yyyy";
 $.fn.datepicker.defaults.weekStart = 1;
 $.fn.datepicker.defaults.daysOfWeekDisabled = [0, 6];
 $.fn.datepicker.defaults.autoclose = true;
-$('.datepicker').datepicker();
-
-/***/ }),
-
-/***/ "./resources/js/components/dynamic-dropdown.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/dynamic-dropdown.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+$('.datepicker').datepicker(); //Datepicker
+//Dynamic dropdown
 
 $('select[name="department"]').on('change', function () {
-  var id = $(this).val().split('|', 1);
-  console.log(id[0]);
+  var id = $(this).val().split('|', 1); // console.log(id[0]);
 
   if (id) {
     $.ajax({
@@ -39865,19 +39867,17 @@ $('select[name="department"]').on('change', function () {
   } else {
     $('select[name="supervisor"]').append('<option value="">Fejl</option>');
   }
-});
+}); //Dynamic dropdown
+//Activity checkboxes
 
-/***/ }),
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener('click', function () {
+    checked = true;
+    showSubmitButton();
+  });
+}); //Activity checkboxes
+//Age slider
 
-/***/ "./resources/js/components/nouislider.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/nouislider.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var slider = document.getElementById('slider');
-var age = document.getElementById('age');
 noUiSlider.create(slider, {
   start: [50],
   step: 10,
@@ -39897,7 +39897,43 @@ noUiSlider.create(slider, {
 });
 slider.noUiSlider.on('update', function (value) {
   age.value = value;
+}); //Age slider
+//Add diagnoses
+
+addDiagnosisButton.addEventListener('click', function () {
+  selectedDiagnoses(selected);
+  input.value = diagnoses;
+  diagnosesList.innerHTML = '';
+  updateDiagnosesList();
 });
+removeDiagnosisButton.addEventListener('click', function () {
+  diagnoses = [];
+  diagnosesList.innerHTML = '';
+});
+
+function selectedDiagnoses(selected) {
+  var value = selected.options[selected.selectedIndex].value;
+  diagnoses.push(value);
+}
+
+function updateDiagnosesList() {
+  diagnoses.forEach(function (diagnose) {
+    var listElement = document.createElement('li');
+    listElement.innerText = diagnose;
+    diagnosesList.appendChild(listElement);
+    showSubmitButton();
+  });
+} //Add diagnoses
+//Show submit button
+
+
+function showSubmitButton() {
+  if (checked =  true && diagnoses.length > 0) {
+    submitButton.style.display = 'block';
+  } else {
+    return false;
+  }
+} //Show submit button
 
 /***/ }),
 
