@@ -57,6 +57,8 @@ class MiniCEXController extends Controller
 
       $minicex->save();
 
-      return redirect()->back()->with('success', 'MiniCEX er gemt');
+      flash('MiniCEX er gemt')->success()->important();
+
+      return redirect('/home');
     }
 }
