@@ -38,6 +38,7 @@
   @yield('javascript')
   <script>
     $('#flash-overlay-modal').modal();
+    $('.dropdown-toggle').dropdown()
   </script>
 </body>
 </html>

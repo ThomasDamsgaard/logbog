@@ -22,6 +22,7 @@ class MiniCEXController extends Controller
     public function store(Request $request)
     {
       //Validate
+      dd($request);
 
       //Department extraction
       $department = explode('|', $request->department);

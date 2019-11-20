@@ -19,10 +19,10 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                <a class="nav-link" href="">MiniCEX</a>
+                <a class="nav-link" href="{{ route('home') }}">MiniCEX</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="">Aktivitetsniveau</a>
+                <a class="nav-link" href="{{ route('activity') }}">Aktivitetsniveau</a>
               </li>
             </ul>
           @endif

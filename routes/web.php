@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/activity', 'ActivityController@index')->name('activity');
 
 //Dynamic supervisor call
 Route::get('/supervisors/get/{id}', 'HomeController@getSupervisors');
