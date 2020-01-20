@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSupervisorsTable extends Migration
+class CreateMiniCEXActivitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateSupervisorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('supervisors', function (Blueprint $table) {
+        Schema::create('mini_c_e_x_activities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('profession')->nullable();
-            $table->integer('department_id')->nullable();
-            $table->tinyInteger('active')->nullable();
+            $table->integer('mini_c_e_x_id')->nullable();
+            $table->string('activities')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateSupervisorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supervisors');
+        Schema::dropIfExists('mini_c_e_x_activities');
     }
 }

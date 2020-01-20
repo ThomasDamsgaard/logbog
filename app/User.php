@@ -38,10 +38,26 @@ class User extends Authenticatable
     ];
 
     /**
+     * The user belongs to a team.
+     */
+    public function teams()
+    {
+        return $this->belongsTo('App\Team');
+    }
+
+    /**
      * MiniCEX's belongs to User
      */
     public function minicexes()
     {
         return $this->hasMany('App\MiniCEX');
+    }
+
+    /**
+     * Feedbacks belongs to User
+     */
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Feedback');
     }
 }

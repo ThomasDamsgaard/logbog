@@ -17,7 +17,7 @@
           <label>Afdeling</label>
           <select class="form-control" name="department" data-dependent="supervisor">
             @foreach ($departments as $department)
-              <option value="{{ $department->id }}|{{ $department->departments }}">{{ $department->departments }}</option>
+              <option value="{{ $department->id }}|{{ $department->name }}">{{ $department->name }}</option>
             @endforeach
           </select>
         </div>
@@ -26,7 +26,7 @@
           <label>Supervisorer</label>
           <select id="supervisor" class="form-control" name="supervisor">
             @foreach ($supervisors as $supervisor)
-              <option value="{{ $supervisor->name }}">{{ $supervisor->name }}</option>
+              <option value="{{ $supervisor->id }}">{{ $supervisor->name }}</option>
             @endforeach
           </select>
         </div>
@@ -36,9 +36,9 @@
 
           @foreach ($activities as $activity)
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="activities[]" value="{{ $activity->activities }}">
+              <input class="form-check-input" type="checkbox" name="activities[]" value="{{ $activity->activity }}">
               <label class="form-check-label">
-                {{ $activity->activities }}
+                {{ $activity->activity }}
               </label>
             </div>
           @endforeach
@@ -58,18 +58,18 @@
         <div class="form-group">
           <label>Patient køn</label>
           <select class="form-control" name="sex">
-            <option value="Mand">Mand</option>
-            <option value="Kvinde">Kvinde</option>
-            <option value="Andet">Andet</option>
+            <option value="1">Mand</option>
+            <option value="2">Kvinde</option>
+            <option value="3">Andet</option>
           </select>
         </div>
 
         <div class="form-group">
           <label>Varighed</label>
           <select class="form-control" name="duration">
-            <option value="Akut/Subakut">Akut/Subakut</option>
-            <option value="Kronisk">Kronisk</option>
-            <option value="Recidiverende">Recidiverende</option>
+            <option value="1">Akut/Subakut</option>
+            <option value="2">Kronisk</option>
+            <option value="3">Recidiverende</option>
           </select>
         </div>
 
@@ -77,7 +77,7 @@
           <label>Primær klage</label>
           <select class="form-control" name="complaint">
             @foreach ($complaints as $complaint)
-              <option value="{{ $complaint->complaint }}">{{ $complaint->complaint }}</option>
+              <option value="{{ $complaint->primary_pain }}">{{ $complaint->primary_pain }}</option>
             @endforeach
           </select>
         </div>
@@ -105,7 +105,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <label>Bedømmelse af supervisor</label>
-          <input type="text" class="form-control" name="studentrating" pattern="[0-9]{8}" placeholder="00000000" required>
+          <input type="text" class="form-control" name="studentrating" pattern="[0-9]{7}" placeholder="0000000" required>
         </div>
 
         <div class="form-group">

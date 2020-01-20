@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Department;
 use App\Supervisor;
 use App\Activity;
-use App\Complaint;
+use App\PrimaryPain;
 use App\Diagnosis;
 
 class HomeController extends Controller
@@ -31,12 +31,14 @@ class HomeController extends Controller
         // Fecth all departments
         $departments = Department::all();
 
+        // dd($departments);
+
         // Fetch supervisors associated with the first department record
         $supervisors = Supervisor::where('department_id', '=', '1')->get();
 
         $activities = Activity::all();
 
-        $complaints = Complaint::all();
+        $complaints = PrimaryPain::all();
 
         $diagnoses = Diagnosis::all();
 

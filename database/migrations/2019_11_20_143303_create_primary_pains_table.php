@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSupervisorsTable extends Migration
+class CreatePrimaryPainsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateSupervisorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('supervisors', function (Blueprint $table) {
+        Schema::create('primary_pains', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('profession')->nullable();
-            $table->integer('department_id')->nullable();
-            $table->tinyInteger('active')->nullable();
-            $table->timestamps();
+            $table->string('primary_pain');
         });
     }
 
@@ -30,6 +26,6 @@ class CreateSupervisorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supervisors');
+        Schema::dropIfExists('primary_pains');
     }
 }

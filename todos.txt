@@ -1,0 +1,11 @@
+- Stud kan tilføje afdelinger og supervisor.
+- Stud kan ændre status på supervisor og afdelinger
+- Stud skal tilmelde sig et hold.
+- Kun stud skal kunne oprette sig.
+
+- Stud kan ændre kodeord og slette en minicex
+
+- Admin kan oprette hold
+- Admin login
+
+- Implementering af portefølje. Kommer sql relationer fra Søren.

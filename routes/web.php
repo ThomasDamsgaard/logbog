@@ -24,4 +24,4 @@ Route::get('/activity', 'ActivityController@index')->name('activity');
 Route::get('/supervisors/get/{id}', 'HomeController@getSupervisors');
 
 //Save a MiniCEX to the database
-Route::post('/minicex', 'MiniCEXController@store')->name('minicex.store');
+Route::post('/minicex', 'StoreMiniCEXController@store')->name('minicex.store');

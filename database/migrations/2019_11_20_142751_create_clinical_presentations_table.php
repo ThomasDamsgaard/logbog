@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSupervisorsTable extends Migration
+class CreateClinicalPresentationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateSupervisorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('supervisors', function (Blueprint $table) {
+        Schema::create('clinical_presentations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('profession')->nullable();
             $table->integer('department_id')->nullable();
-            $table->tinyInteger('active')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('sex')->nullable();
+            $table->string('primary_pain')->nullable();
+            $table->integer('duration')->nullable();
+            $table->string('icd10')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateSupervisorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('supervisors');
+        Schema::dropIfExists('clinical_presentations');
     }
 }
