@@ -34,7 +34,7 @@
             @guest
 
               <li class="nav-item">
-                  <a class="nav-link" href="{{ route('login') }}">{{ __('Admin') }}</a>
+                  <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Admin') }}</a>
               </li>
               {{-- @if (Route::has('register'))
                   <li class="nav-item">
