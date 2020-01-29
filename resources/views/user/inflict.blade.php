@@ -15,7 +15,7 @@
               <div class="form-group">
                 <label>Navn</label>
                 <select class="form-control" name="profession">
-                  <option value="1">Kiropraktor</option>
+                  <option value="1">K</option>
                   <option value="2"></option>
                   <option value="3">Andet</option>
                 </select>

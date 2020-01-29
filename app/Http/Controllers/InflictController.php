@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Profession;
 
 class InflictController extends Controller
 {
@@ -13,6 +14,7 @@ class InflictController extends Controller
      */
     public function index()
     {
-        return view('user.inflict');
+        $professions = Profession::all();
+        return view('user.inflict', compact('professions'));
     }
 }
