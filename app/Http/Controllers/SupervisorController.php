@@ -25,6 +25,8 @@ class SupervisorController extends Controller
 
         $supervisor->save();
 
+        flash('Supervisor tilføjet')->success();
+
         return redirect(route('inflict.index'));
     }
 }
