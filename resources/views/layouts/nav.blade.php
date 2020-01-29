@@ -24,6 +24,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('activity') }}">Aktivitetsniveau</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('inflict.index') }}">Tilføj</a>
+              </li>
             </ul>
           @endif
 
