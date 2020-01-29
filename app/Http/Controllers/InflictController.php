@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Profession;
+use App\Department;
 
 class InflictController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the application dashboard.
      *
@@ -15,6 +26,7 @@ class InflictController extends Controller
     public function index()
     {
         $professions = Profession::all();
-        return view('user.inflict', compact('professions'));
+        $departments = Department::all();
+        return view('user.inflict', compact('professions', 'departments'));
     }
 }
