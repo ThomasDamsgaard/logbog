@@ -33,6 +33,9 @@ Route::get('/inflict', 'InflictController@index')->name('inflict.index');
 // Supervisor
 Route::post('/supervisor', 'SupervisorController@store')->name('supervisor.store');
 
+// Department
+Route::post('/department', 'DepartmentController@store')->name('department.store');
+
 //Dynamic supervisor call
 Route::get('/supervisors/get/{id}', 'HomeController@getSupervisors');
 

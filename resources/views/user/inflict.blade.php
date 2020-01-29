@@ -3,7 +3,7 @@
 @section('content')
   <div class="container py-4">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-6 mb-3">
         <form action="{{ route('supervisor.store') }}" method="POST">
           @csrf
 
@@ -49,8 +49,32 @@
         </form>
       </div>
       <div class="col-md-6">
-        <form class="" action="index.html" method="post">
+        <form action="{{ route('department.store') }}" method="POST">
+          @csrf
 
+          <div class="card">
+            <div class="card-body">
+              <p class="text-center">Tilføj afdeling</p>
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Afdelingsnavn</label>
+                    <input type="string" class="form-control" name="name" placeholder="Middelfart Rygcenter" required>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary bottom-right">Tilføj Afdeling</button>
+                  </div>
+                </div>
+                <input type="hidden" name="active" value="1">
+                <div class="col">
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </div>
