@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         // Fecth all departments
-        $departments = Department::all();
+        $departments = Department::where('active', '=', '1')->get();
 
         // dd($departments);
 
