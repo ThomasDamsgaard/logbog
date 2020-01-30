@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('frontpage');
 })->name('frontpage');
@@ -32,12 +21,17 @@ Route::get('/inflict', 'InflictController@index')->name('inflict.index');
 
 // Supervisor
 Route::post('/supervisor', 'SupervisorController@store')->name('supervisor.store');
+Route::post('/supervisor/status', 'SupervisorController@status')->name('supervisor.status.change');
 
 // Department
 Route::post('/department', 'DepartmentController@store')->name('department.store');
+Route::post('/department/status', 'DepartmentController@status')->name('department.status.change');
+
 
 //Dynamic supervisor call
 Route::get('/supervisors/get/{id}', 'HomeController@getSupervisors');
+Route::get('/supervisors/active/get/{id}', 'InflictController@getSupervisorActiveStatus');
+Route::get('/departments/active/get/{id}', 'InflictController@getDepartmentActiveStatus');
 
 //Save a MiniCEX to the database
 Route::post('/minicex', 'StoreMiniCEXController@store')->name('minicex.store');

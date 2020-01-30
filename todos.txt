@@ -1,5 +1,5 @@
-- Stud kan tilføje afdelinger og supervisor.
-- Stud kan ændre status på supervisor og afdelinger
+- Stud kan tilføje afdelinger og supervisor. Tjek!!
+- Stud kan ændre status på supervisor og afdelinger Tjek!!
 - Stud skal tilmelde sig et hold.
 - Kun stud skal kunne oprette sig.
 

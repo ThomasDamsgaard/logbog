@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Department;
+use DB;
 
 class DepartmentController extends Controller
 {
@@ -22,6 +23,21 @@ class DepartmentController extends Controller
         $department->save();
 
         flash('Afdeling tilføjet')->success();
+
+        return redirect(route('inflict.index'));
+    }
+
+    public function status(Request $request)
+    {
+        $department = explode('|', $request->department_status);
+
+        // dd($request);
+
+        $update = DB::table('departments')
+        ->where('id', $department[0])
+        ->update(['active' => $request->department_active]);
+
+        flash('Status er opdateret')->success();
 
         return redirect(route('inflict.index'));
     }

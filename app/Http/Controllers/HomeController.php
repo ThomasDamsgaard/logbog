@@ -43,18 +43,18 @@ class HomeController extends Controller
         $diagnoses = Diagnosis::all();
 
         return view('home', compact(
-          'departments',
-          'supervisors',
-          'activities',
-          'complaints',
-          'diagnoses'
+            'departments',
+            'supervisors',
+            'activities',
+            'complaints',
+            'diagnoses'
         ));
     }
 
     public function getSupervisors($id)
     {
-      $supervisors = Supervisor::where('department_id', $id)->pluck('name', 'id');
+        $supervisors = Supervisor::where('department_id', $id)->pluck('name', 'id');
 
-      return json_encode($supervisors);
+        return json_encode($supervisors);
     }
 }

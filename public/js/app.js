@@ -39917,12 +39917,17 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/js/dependencies/bootstrap-datepicker.min.js"); // require('./components/datepicker');
-// require('./components/nouislider');
-// require('./components/dynamic-dropdown');
+__webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/js/dependencies/bootstrap-datepicker.min.js");
 
+__webpack_require__(/*! ./components/datepicker */ "./resources/js/components/datepicker.js");
+
+__webpack_require__(/*! ./components/nouislider */ "./resources/js/components/nouislider.js");
+
+__webpack_require__(/*! ./components/dynamic-dropdown */ "./resources/js/components/dynamic-dropdown.js");
 
 __webpack_require__(/*! ./components/form */ "./resources/js/components/form.js");
+
+__webpack_require__(/*! ./components/inflict */ "./resources/js/components/inflict.js");
 
 /***/ }),
 
@@ -39985,6 +39990,51 @@ if (token) {
 
 window.noUiSlider = __webpack_require__(/*! noUiSlider */ "./node_modules/noUiSlider/distribute/nouislider.js");
 window.wNumb = __webpack_require__(/*! wNumb */ "./node_modules/wNumb/wNumb.js");
+
+/***/ }),
+
+/***/ "./resources/js/components/datepicker.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/datepicker.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$.fn.datepicker.defaults.format = "dd-mm-yyyy";
+$.fn.datepicker.defaults.weekStart = 1;
+$.fn.datepicker.defaults.daysOfWeekDisabled = [0, 6];
+$.fn.datepicker.defaults.autoclose = true;
+$('.datepicker').datepicker();
+
+/***/ }),
+
+/***/ "./resources/js/components/dynamic-dropdown.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/dynamic-dropdown.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('select[name="department"]').on('change', function () {
+  var id = $(this).val().split('|', 1);
+  console.log(id[0]);
+
+  if (id) {
+    $.ajax({
+      url: '/supervisors/get/' + id,
+      type: "GET",
+      dataType: "json",
+      success: function success(data) {
+        $('select[name="supervisor"]').empty();
+        $.each(data, function (key, value) {
+          $('select[name="supervisor"]').append('<option value="' + value + '">' + value + '</option>');
+        });
+      }
+    });
+  } else {
+    $('select[name="supervisor"]').append('<option value="">Fejl</option>');
+  }
+});
 
 /***/ }),
 
@@ -40099,6 +40149,109 @@ function showSubmitButton() {
     return false;
   }
 } //Show submit button
+
+/***/ }),
+
+/***/ "./resources/js/components/inflict.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/inflict.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('select[name="supervisor"]').on('change', function () {
+  var id = $(this).val().split('|', 2);
+
+  if (id[1] == 1) {
+    $.ajax({
+      url: '/supervisors/active/get/' + id,
+      type: "GET",
+      dataType: "json",
+      success: function success(data) {
+        $('select[name="active"]').empty();
+        $('select[name="active"]').append('<option selected value="1">Aktiv</option>');
+        $('select[name="active"]').append('<option value="0">Inaktiv</option>');
+      }
+    });
+  } else if (id[1] == 0) {
+    $.ajax({
+      url: '/supervisors/active/get/' + id,
+      type: "GET",
+      dataType: "json",
+      success: function success(data) {
+        $('select[name="active"]').empty();
+        $('select[name="active"]').append('<option value="1">Aktiv</option>');
+        $('select[name="active"]').append('<option selected value="0">Inaktiv</option>');
+      }
+    });
+  } else {
+    $('select[name="active"]').empty();
+    $('select[name="active"]').append('<option value="">Fejl - Kontakt Søren</option>');
+  }
+});
+$('select[name="department_status"]').on('change', function () {
+  var id = $(this).val().split('|', 2);
+  console.log(id);
+
+  if (id[1] == 1) {
+    $.ajax({
+      url: '/departments/active/get/' + id,
+      type: "GET",
+      dataType: "json",
+      success: function success(data) {
+        $('select[name="department_active"]').empty();
+        $('select[name="department_active"]').append('<option selected value="1">Aktiv</option>');
+        $('select[name="department_active"]').append('<option value="0">Inaktiv</option>');
+      }
+    });
+  } else if (id[1] == 0) {
+    $.ajax({
+      url: '/departments/active/get/' + id,
+      type: "GET",
+      dataType: "json",
+      success: function success(data) {
+        $('select[name="department_active"]').empty();
+        $('select[name="department_active"]').append('<option value="1">Aktiv</option>');
+        $('select[name="department_active"]').append('<option selected value="0">Inaktiv</option>');
+      }
+    });
+  } else {
+    $('select[name="department_active"]').empty();
+    $('select[name="department_active"]').append('<option value="">Fejl - Kontakt Søren</option>');
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/nouislider.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/nouislider.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var slider = document.getElementById('slider');
+var age = document.getElementById('age');
+noUiSlider.create(slider, {
+  start: [50],
+  step: 10,
+  range: {
+    'min': [0],
+    'max': [100]
+  },
+  // tooltips: true,
+  format: wNumb({
+    decimals: 0
+  }),
+  pips: {
+    mode: 'steps',
+    stepped: true,
+    density: 2
+  }
+});
+slider.noUiSlider.on('update', function (value) {
+  age.value = value;
+});
 
 /***/ }),
 
@@ -41093,7 +41246,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\n\n  $min: map-get($breakpoints, $name);\n       ^\n      $map: xl is not a map.\n   ╷\n27 │   $min: map-get($breakpoints, $name);\n   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n   ╵\n  node_modules/bootstrap/scss/mixins/_breakpoints.scss 27:9  breakpoint-min()\n  node_modules/bootstrap/scss/mixins/_breakpoints.scss 85:9  media-breakpoint-between()\n  stdin 33:1                                                 root stylesheet\n      in /home/vagrant/code/logbog/node_modules/bootstrap/scss/mixins/_breakpoints.scss (line 27, column 9)\n    at /home/vagrant/code/logbog/node_modules/webpack/lib/NormalModule.js:313:20\n    at /home/vagrant/code/logbog/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /home/vagrant/code/logbog/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/home/vagrant/code/logbog/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /home/vagrant/code/logbog/node_modules/sass-loader/dist/index.js:89:7\n    at Function.call$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:54416:16)\n    at _render_closure1.call$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:33511:12)\n    at _RootZone.runBinary$3$3 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:19804:18)\n    at _RootZone.runBinary$3 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:19808:19)\n    at _FutureListener.handleError$1 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18273:19)\n    at _Future__propagateToListeners_handleError.call$0 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18561:40)\n    at Object._Future__propagateToListeners (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3486:88)\n    at _Future._completeError$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18397:9)\n    at _AsyncAwaitCompleter.completeError$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:17796:12)\n    at Object._asyncRethrow (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3242:17)\n    at /home/vagrant/code/logbog/node_modules/sass/sass.dart.js:10539:20\n    at _wrapJsFunctionForAsync_closure.$protected (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3265:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:17817:12)\n    at _awaitOnObject_closure0.call$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:17809:25)\n    at _RootZone.runBinary$3$3 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:19804:18)\n    at _RootZone.runBinary$3 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:19808:19)\n    at _FutureListener.handleError$1 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18273:19)\n    at _Future__propagateToListeners_handleError.call$0 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18561:40)\n    at Object._Future__propagateToListeners (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3486:88)\n    at _Future._completeError$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18397:9)\n    at _AsyncAwaitCompleter.completeError$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:17796:12)\n    at Object._asyncRethrow (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3242:17)\n    at /home/vagrant/code/logbog/node_modules/sass/sass.dart.js:12240:20\n    at _wrapJsFunctionForAsync_closure.$protected (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3265:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:17817:12)\n    at _awaitOnObject_closure0.call$2 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:17809:25)\n    at _RootZone.runBinary$3$3 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:19804:18)\n    at _RootZone.runBinary$3 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:19808:19)\n    at _FutureListener.handleError$1 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18273:19)\n    at _Future__propagateToListeners_handleError.call$0 (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:18561:40)\n    at Object._Future__propagateToListeners (/home/vagrant/code/logbog/node_modules/sass/sass.dart.js:3486:88)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 

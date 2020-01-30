@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Supervisor;
+use DB;
 
 class SupervisorController extends Controller
 {
@@ -26,6 +27,19 @@ class SupervisorController extends Controller
         $supervisor->save();
 
         flash('Supervisor tilføjet')->success();
+
+        return redirect(route('inflict.index'));
+    }
+
+    public function status(Request $request)
+    {
+        $supervisor = explode('|', $request->supervisor);
+
+        $update = DB::table('supervisors')
+        ->where('id', $supervisor[0])
+        ->update(['active' => $request->active]);
+
+        flash('Status er opdateret')->success();
 
         return redirect(route('inflict.index'));
     }
