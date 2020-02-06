@@ -39917,13 +39917,12 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/js/dependencies/bootstrap-datepicker.min.js");
+__webpack_require__(/*! ./dependencies/bootstrap-datepicker.min */ "./resources/js/dependencies/bootstrap-datepicker.min.js"); // require('./components/datepicker');
+// require('./components/nouislider');
+// require('./components/dynamic-dropdown');
+// require('./components/diagnoses');
+// require('./components/submit-button');
 
-__webpack_require__(/*! ./components/datepicker */ "./resources/js/components/datepicker.js");
-
-__webpack_require__(/*! ./components/nouislider */ "./resources/js/components/nouislider.js");
-
-__webpack_require__(/*! ./components/dynamic-dropdown */ "./resources/js/components/dynamic-dropdown.js");
 
 __webpack_require__(/*! ./components/form */ "./resources/js/components/form.js");
 
@@ -39993,51 +39992,6 @@ window.wNumb = __webpack_require__(/*! wNumb */ "./node_modules/wNumb/wNumb.js")
 
 /***/ }),
 
-/***/ "./resources/js/components/datepicker.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/datepicker.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$.fn.datepicker.defaults.format = "dd-mm-yyyy";
-$.fn.datepicker.defaults.weekStart = 1;
-$.fn.datepicker.defaults.daysOfWeekDisabled = [0, 6];
-$.fn.datepicker.defaults.autoclose = true;
-$('.datepicker').datepicker();
-
-/***/ }),
-
-/***/ "./resources/js/components/dynamic-dropdown.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/dynamic-dropdown.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$('select[name="department"]').on('change', function () {
-  var id = $(this).val().split('|', 1);
-  console.log(id[0]);
-
-  if (id) {
-    $.ajax({
-      url: '/supervisors/get/' + id,
-      type: "GET",
-      dataType: "json",
-      success: function success(data) {
-        $('select[name="supervisor"]').empty();
-        $.each(data, function (key, value) {
-          $('select[name="supervisor"]').append('<option value="' + value + '">' + value + '</option>');
-        });
-      }
-    });
-  } else {
-    $('select[name="supervisor"]').append('<option value="">Fejl</option>');
-  }
-});
-
-/***/ }),
-
 /***/ "./resources/js/components/form.js":
 /*!*****************************************!*\
   !*** ./resources/js/components/form.js ***!
@@ -40065,7 +40019,7 @@ $('.datepicker').datepicker(); //Datepicker
 //Dynamic dropdown
 
 $('select[name="department"]').on('change', function () {
-  var id = $(this).val().split('|', 1); // console.log(id[0]);
+  var id = $(this).val().split('|', 1);
 
   if (id) {
     $.ajax({
@@ -40075,7 +40029,7 @@ $('select[name="department"]').on('change', function () {
       success: function success(data) {
         $('select[name="supervisor"]').empty();
         $.each(data, function (key, value) {
-          $('select[name="supervisor"]').append('<option value="' + value + '">' + value + '</option>');
+          $('select[name="supervisor"]').append('<option value="' + key + '">' + value + '</option>');
         });
       }
     });
@@ -40149,38 +40103,6 @@ function showSubmitButton() {
     return false;
   }
 } //Show submit button
-
-/***/ }),
-
-/***/ "./resources/js/components/nouislider.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/nouislider.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var slider = document.getElementById('slider');
-var age = document.getElementById('age');
-noUiSlider.create(slider, {
-  start: [50],
-  step: 10,
-  range: {
-    'min': [0],
-    'max': [100]
-  },
-  // tooltips: true,
-  format: wNumb({
-    decimals: 0
-  }),
-  pips: {
-    mode: 'steps',
-    stepped: true,
-    density: 2
-  }
-});
-slider.noUiSlider.on('update', function (value) {
-  age.value = value;
-});
 
 /***/ }),
 
