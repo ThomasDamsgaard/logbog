@@ -9,11 +9,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 class Admin extends Model implements AuthenticatableContract
 {
     use Authenticatable;
-    
+
     protected $guard = 'admin';
 
     protected $fillable = [
-          'name', 'email', 'password',
+          'firstname', 'lastname', 'email', 'password',
       ];
 
     protected $hidden = [
