@@ -15,7 +15,7 @@ class CreateMiniCEXActivitiesTable extends Migration
     {
         Schema::create('mini_c_e_x_activities', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('mini_c_e_x_id')->nullable();
+            $table->integer('mini_c_e_x_e_s_id')->nullable();
             $table->string('activities')->nullable();
             $table->timestamps();
         });
