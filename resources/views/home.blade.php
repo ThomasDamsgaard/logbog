@@ -128,39 +128,34 @@
 </form>
 
 
-      @if (Auth::user()->team_id == null)
-
-
+@if (Auth::user()->team_id == null)
 <div class="modal fade" id="assign-to-team-modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-
-        <div class="modal-header">
-          <div class="container">
-            <form action="{{ route('user.update') }}" method="POST">
-              @csrf
-              <div class="row text-center">
-                <label class="col-form-label col-sm-4 mb-2 mb-sm-0">Tilmeld dig et hold</label>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                  <select class="form-control" name="id">
-                    @foreach ($teams as $team)
-                      <option value="{{ $team->id }}">{{ $team->b_start->formatLocalized('%b %Y') }}</option>
-                    @endforeach
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <button type="submit" class="btn btn-primary">Tilmeld</button>
-                </div>
+      <div class="modal-header">
+        <div class="container">
+          <form action="{{ route('user.update') }}" method="POST">
+            @csrf
+            <div class="row text-center">
+              <label class="col-form-label col-sm-4 mb-2 mb-sm-0">Tilmeld dig et hold</label>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <select class="form-control" name="id">
+                  @foreach ($teams as $team)
+                    <option value="{{ $team->id }}">{{ $team->b_start->formatLocalized('%b %Y') }}</option>
+                  @endforeach
+                </select>
               </div>
-            </form>
-          </div>
-
-
+              <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary">Tilmeld</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
-      @endif
+</div>
+@endif
 
 @endsection
 
