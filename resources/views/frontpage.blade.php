@@ -38,6 +38,12 @@
           <button type="submit" class="btn btn-primary btn-block">
             {{ __('Log ind') }}
           </button>
+
+          @if (Route::has('password.request'))
+              <a class="btn btn-link" href="{{ route('password.request') }}">
+                  {{ __('Glemt Kodeord?') }}
+              </a>
+          @endif
         </div>
       </form>
     </div>

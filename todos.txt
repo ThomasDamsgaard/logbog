@@ -1,9 +1,9 @@
 - Stud kan tilføje afdelinger og supervisor. Tjek!!
 - Stud kan ændre status på supervisor og afdelinger Tjek!!
 - Stud skal tilmelde sig et hold. Tjek!!
-- Kun stud skal kunne oprette sig.
+- Kun stud skal kunne oprette sig. Tjek!!
 
-- Stud kan ændre kodeord.
+- Stud kan ændre kodeord. Tjek!! HUSK AT ÆNDRE MAIL VED PRODUCTION
 - Stud kan slette en minicex.
 
 - Admin kan oprette hold
