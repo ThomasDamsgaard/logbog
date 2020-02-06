@@ -8,6 +8,8 @@ use App\Supervisor;
 use App\Activity;
 use App\PrimaryPain;
 use App\Diagnosis;
+use App\Team;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -28,27 +30,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Fecth all departments
         $departments = Department::where('active', '=', '1')->get();
-
-        // dd($departments);
-
-        // Fetch supervisors associated with the first department record
         $supervisors = Supervisor::where('department_id', '=', '1')->get();
-
         $activities = Activity::all();
-
         $complaints = PrimaryPain::all();
-
         $diagnoses = Diagnosis::all();
+        $teams = Team::where('active', 1)->get();
 
         return view('home', compact(
             'departments',
             'supervisors',
             'activities',
             'complaints',
-            'diagnoses'
+            'diagnoses',
+            'teams'
         ));
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+        $user->team_id = $request->id;
+
+        $user->save();
+
+        flash('Tilføjet til team')->success();
+
+        return redirect(route('home'));
     }
 
     public function getSupervisors($id)

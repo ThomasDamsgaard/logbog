@@ -8,6 +8,16 @@ use DB;
 
 class DepartmentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -30,8 +40,6 @@ class DepartmentController extends Controller
     public function status(Request $request)
     {
         $department = explode('|', $request->department_status);
-
-        // dd($request);
 
         $update = DB::table('departments')
         ->where('id', $department[0])

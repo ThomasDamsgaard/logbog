@@ -39927,7 +39927,7 @@ __webpack_require__(/*! ./components/dynamic-dropdown */ "./resources/js/compone
 
 __webpack_require__(/*! ./components/form */ "./resources/js/components/form.js");
 
-__webpack_require__(/*! ./components/inflict */ "./resources/js/components/inflict.js");
+$('#assign-to-team-modal').modal('show'); // require('./components/inflict');
 
 /***/ }),
 
@@ -40149,77 +40149,6 @@ function showSubmitButton() {
     return false;
   }
 } //Show submit button
-
-/***/ }),
-
-/***/ "./resources/js/components/inflict.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/inflict.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$('select[name="supervisor"]').on('change', function () {
-  var id = $(this).val().split('|', 2);
-
-  if (id[1] == 1) {
-    $.ajax({
-      url: '/supervisors/active/get/' + id,
-      type: "GET",
-      dataType: "json",
-      success: function success(data) {
-        $('select[name="active"]').empty();
-        $('select[name="active"]').append('<option selected value="1">Aktiv</option>');
-        $('select[name="active"]').append('<option value="0">Inaktiv</option>');
-      }
-    });
-  } else if (id[1] == 0) {
-    $.ajax({
-      url: '/supervisors/active/get/' + id,
-      type: "GET",
-      dataType: "json",
-      success: function success(data) {
-        $('select[name="active"]').empty();
-        $('select[name="active"]').append('<option value="1">Aktiv</option>');
-        $('select[name="active"]').append('<option selected value="0">Inaktiv</option>');
-      }
-    });
-  } else {
-    $('select[name="active"]').empty();
-    $('select[name="active"]').append('<option value="">Fejl - Kontakt Søren</option>');
-  }
-});
-$('select[name="department_status"]').on('change', function () {
-  var id = $(this).val().split('|', 2);
-  console.log(id);
-
-  if (id[1] == 1) {
-    $.ajax({
-      url: '/departments/active/get/' + id,
-      type: "GET",
-      dataType: "json",
-      success: function success(data) {
-        $('select[name="department_active"]').empty();
-        $('select[name="department_active"]').append('<option selected value="1">Aktiv</option>');
-        $('select[name="department_active"]').append('<option value="0">Inaktiv</option>');
-      }
-    });
-  } else if (id[1] == 0) {
-    $.ajax({
-      url: '/departments/active/get/' + id,
-      type: "GET",
-      dataType: "json",
-      success: function success(data) {
-        $('select[name="department_active"]').empty();
-        $('select[name="department_active"]').append('<option value="1">Aktiv</option>');
-        $('select[name="department_active"]').append('<option selected value="0">Inaktiv</option>');
-      }
-    });
-  } else {
-    $('select[name="department_active"]').empty();
-    $('select[name="department_active"]').append('<option value="">Fejl - Kontakt Søren</option>');
-  }
-});
 
 /***/ }),
 
