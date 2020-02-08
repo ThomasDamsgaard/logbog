@@ -22,6 +22,15 @@ class MiniCEXController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        $minicexes = MiniCEX::where('user_id', Auth::user()->id)->get();
+
+        dd($minicexes);
+
+        return view('user.minicex.index');
+    }
+
     public function store(Request $request)
     {
         //Department extraction
@@ -91,5 +100,13 @@ class MiniCEXController extends Controller
         flash('MiniCEX er gemt')->success()->important();
 
         return redirect('/home');
+    }
+
+    public function show(MiniCEX $minicex)
+    {
+    }
+
+    public function destroy(MiniCEX $minicex)
+    {
     }
 }

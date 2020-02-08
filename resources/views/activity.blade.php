@@ -10,14 +10,11 @@
         {{-- <canvas id="canvas" width="90%"></canvas> --}}
         {!! $chart->container() !!}
       </div>
-
-      {{-- <div class="col-md-4">
-
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        
       </div>
-
-      <div class="col-md-4">
-
-      </div> --}}
     </div>
   </div>
 @endsection

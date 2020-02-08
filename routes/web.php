@@ -20,8 +20,11 @@ Route::post('/home/update/team', 'HomeController@update')->name('user.update');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/activity', 'ActivityController@index')->name('activity');
 Route::get('/inflict', 'InflictController@index')->name('inflict.index');
-// Save a MiniCEX to the database
+// MiniCEX
+Route::get('/minicex', 'MiniCEXController@index')->name('minicex.index');
+Route::get('/minicex/{id}', 'MiniCEXController@show')->name('minicex.show');
 Route::post('/minicex', 'MiniCEXController@store')->name('minicex.store');
+Route::delete('/minicex', 'MiniCEXController@destroy')->name('minicex.delete');
 
 // Supervisor
 Route::post('/supervisor', 'SupervisorController@store')->name('supervisor.store');
