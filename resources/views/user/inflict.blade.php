@@ -48,33 +48,6 @@
         </form>
       </div>
       <div class="col-md-6 mb-3">
-        <form action="{{ route('department.store') }}" method="POST">
-          @csrf
-
-          <div class="card">
-            <div class="card-body">
-              <p class="text-center">Tilføj afdeling</p>
-              <div class="row">
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label>Afdelingsnavn</label>
-                    <input type="string" class="form-control" name="name" placeholder="Middelfart Rygcenter" required>
-                  </div>
-                </div>
-
-                <input type="hidden" name="active" value="1">
-
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Tilføj Afdeling</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="col-md-6 mb-3">
         <form action="{{ route('supervisor.status.change') }}" method="POST">
           @csrf
 
@@ -122,6 +95,33 @@
 
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">Ændre status</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <form action="{{ route('department.store') }}" method="POST">
+          @csrf
+
+          <div class="card">
+            <div class="card-body">
+              <p class="text-center">Tilføj afdeling</p>
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Afdelingsnavn</label>
+                    <input type="string" class="form-control" name="name" placeholder="Middelfart Rygcenter" required>
+                  </div>
+                </div>
+
+                <input type="hidden" name="active" value="1">
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary">Tilføj Afdeling</button>
                 </div>
               </div>
             </div>

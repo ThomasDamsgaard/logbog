@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/activity', 'ActivityController@index')->name('activity');
 Route::get('/inflict', 'InflictController@index')->name('inflict.index');
 // Save a MiniCEX to the database
-Route::post('/minicex', 'StoreMiniCEXController@store')->name('minicex.store');
+Route::post('/minicex', 'MiniCEXController@store')->name('minicex.store');
 
 // Supervisor
 Route::post('/supervisor', 'SupervisorController@store')->name('supervisor.store');
