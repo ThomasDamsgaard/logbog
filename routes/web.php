@@ -13,7 +13,8 @@ Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm')->name('adm
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
-Route::get('/admin', 'Auth\AdminController@index')->name('admin');
+Route::get('/admin', 'Auth\AdminController@index')->name('admin.home');
+Route::post('/logout/admin', 'Auth\AdminController@logout')->name('admin.logout');
 
 // USER ROUTES
 Route::post('/home/update/team', 'HomeController@update')->name('user.update');

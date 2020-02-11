@@ -7,6 +7,6 @@
 - Stud kan slette en minicex. Tjek!!
 
 - Admin kan oprette hold
-- Admin login
+- Admin login Tjek!!
 
 - Implementering af portefølje. Kommer sql relationer fra Søren.
