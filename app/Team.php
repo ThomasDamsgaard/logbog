@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     /**
+     * The attributes are all mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
      * A team consists of many users
      */
     public function users()
