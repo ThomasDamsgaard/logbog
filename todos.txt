@@ -4,9 +4,9 @@
 - Kun stud skal kunne oprette sig. Tjek!!
 
 - Stud kan ændre kodeord. Tjek!! HUSK AT ÆNDRE MAIL VED PRODUCTION
-- Stud kan slette en minicex.
+- Stud kan slette en minicex. Tjek!!
 
 - Admin kan oprette hold
-- Admin login
+- Admin login Tjek!!
 
 - Implementering af portefølje. Kommer sql relationer fra Søren.

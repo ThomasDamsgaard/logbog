@@ -22,15 +22,6 @@ class MiniCEXController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $minicexes = MiniCEX::where('user_id', Auth::user()->id)->get();
-
-        dd($minicexes);
-
-        return view('user.minicex.index');
-    }
-
     public function store(Request $request)
     {
         //Department extraction
@@ -64,7 +55,9 @@ class MiniCEXController extends Controller
 
         $clinicalPresentation = new ClinicalPresentation;
 
+        $clinicalPresentation->user_id = Auth::id();
         $clinicalPresentation->department_id = $department[0];
+        $clinicalPresentation->mini_c_e_x_e_s_id = $minicex->id;
         $clinicalPresentation->age = $request->age;
         $clinicalPresentation->sex = $request->sex;
         $clinicalPresentation->primary_pain = $request->complaint;
@@ -102,11 +95,18 @@ class MiniCEXController extends Controller
         return redirect('/home');
     }
 
-    public function show(MiniCEX $minicex)
+    public function show($id)
     {
+        $minicex = MiniCEX::find($id);
+
+        return view('user.minicex.show', compact('minicex'));
     }
 
     public function destroy(MiniCEX $minicex)
     {
+        $minicex->delete();
+
+        flash('MiniCEX er slettet')->success()->important();
+        return redirect(route('activity'));
     }
 }

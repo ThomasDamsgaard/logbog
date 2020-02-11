@@ -21,10 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/activity', 'ActivityController@index')->name('activity');
 Route::get('/inflict', 'InflictController@index')->name('inflict.index');
 // MiniCEX
-Route::get('/minicex', 'MiniCEXController@index')->name('minicex.index');
-Route::get('/minicex/{id}', 'MiniCEXController@show')->name('minicex.show');
+// Route::get('/minicex', 'MiniCEXController@index')->name('minicex.index');
+Route::get('/minicex/{minicex}', 'MiniCEXController@show')->name('minicex.show');
 Route::post('/minicex', 'MiniCEXController@store')->name('minicex.store');
-Route::delete('/minicex', 'MiniCEXController@destroy')->name('minicex.delete');
+Route::delete('/minicex/{minicex}', 'MiniCEXController@destroy')->name('minicex.delete');
 
 // Supervisor
 Route::post('/supervisor', 'SupervisorController@store')->name('supervisor.store');

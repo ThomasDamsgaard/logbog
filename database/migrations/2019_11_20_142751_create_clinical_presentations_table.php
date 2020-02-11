@@ -15,7 +15,9 @@ class CreateClinicalPresentationsTable extends Migration
     {
         Schema::create('clinical_presentations', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id')->nullable();
             $table->integer('department_id')->nullable();
+            $table->integer('mini_c_e_x_e_s_id')->nullable();
             $table->integer('age')->nullable();
             $table->integer('sex')->nullable();
             $table->string('primary_pain')->nullable();
