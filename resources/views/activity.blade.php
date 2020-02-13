@@ -28,17 +28,19 @@
                 </tr>
               </thead>
               <tbody>
-                @forelse ($minicexes as $key => $minicex)
-                  <tr data-href="{{ url('minicex/' . $minicex->id) }}">
-                      <td>{{ $minicex->date->formatLocalized('%d %b') }}</td>
-                      <td>{{ $minicex->supervisor->name }}</td>
-                      <td>{{ $minicex->department->name }}</td>
-                      <td>{{ $minicex->clinical->age }}</td>
-                      <td>{{ $minicex->clinical->sex }}</td>
-                      <td>{{ $minicex->clinical->duration }}</td>
-                      <td>{{ $minicex->clinical->primary_pain }}</td>
-                  </tr>
-                @empty
+                @if ($minicexes->count() > 0)
+                  @foreach ($minicexes as $key => $minicex)
+                    <tr data-href="{{ url('minicex/' . $minicex->id) }}">
+                        <td>{{ $minicex->date->formatLocalized('%d %b') }}</td>
+                        <td>{{ $minicex->supervisor->name }}</td>
+                        <td>{{ $minicex->department->name }}</td>
+                        <td>{{ $minicex->clinical->age }}</td>
+                        <td>{{ $minicex->clinical->sex }}</td>
+                        <td>{{ $minicex->clinical->duration }}</td>
+                        <td>{{ $minicex->clinical->primary_pain }}</td>
+                    </tr>
+                  @endforeach
+                @else
                   <tr>
                       <td>Du</td>
                       <td>har</td>
@@ -48,7 +50,7 @@
                       <td>MiniCEX</td>
                       <td>endnu</td>
                   </tr>
-                @endforelse
+                @endif
               </tbody>
             </table>
           </div>
