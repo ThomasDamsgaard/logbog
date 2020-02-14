@@ -28,8 +28,7 @@
                 </tr>
               </thead>
               <tbody>
-                @if ($minicexes->count() > 0)
-                  @foreach ($minicexes as $key => $minicex)
+                  @forelse ($minicexes as $key => $minicex)
                     <tr data-href="{{ url('minicex/' . $minicex->id) }}">
                         <td>{{ $minicex->date->formatLocalized('%d %b') }}</td>
                         <td>{{ $minicex->supervisor->name }}</td>
@@ -39,8 +38,7 @@
                         <td>{{ $minicex->clinical->duration }}</td>
                         <td>{{ $minicex->clinical->primary_pain }}</td>
                     </tr>
-                  @endforeach
-                @else
+                @empty
                   <tr>
                       <td>Du</td>
                       <td>har</td>
@@ -50,7 +48,7 @@
                       <td>MiniCEX</td>
                       <td>endnu</td>
                   </tr>
-                @endif
+                @endforelse
               </tbody>
             </table>
           </div>
