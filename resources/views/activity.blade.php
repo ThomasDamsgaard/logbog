@@ -28,7 +28,7 @@
                 </tr>
               </thead>
               <tbody>
-                  @forelse ($minicexes as $key => $minicex)
+                  @forelse ($minicexes ?: [] as $minicex)
                     <tr data-href="{{ url('minicex/' . $minicex->id) }}">
                         <td>{{ $minicex->date->formatLocalized('%d %b') }}</td>
                         <td>{{ $minicex->supervisor->name }}</td>

@@ -65,6 +65,7 @@ class ActivityController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
 
+        // dd(Auth::user());
         // dd($minicexes);
 
         return view('activity', compact('minicexes', 'months', 'data1', 'data2', 'data3', 'query', 'chart'));

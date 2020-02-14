@@ -35,7 +35,7 @@ class ClinicalPresentation extends Model
     */
     public function minicexes()
     {
-        return $this->belongsTo('App\MiniCEX');
+        return $this->belongsTo('App\MiniCEX', $mini_c_e_x_e_s_id);
     }
 
     /**
