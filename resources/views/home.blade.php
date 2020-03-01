@@ -38,7 +38,7 @@
             <div class="form-check">
               <input class="form-check-input" type="checkbox" name="activities[]" value="{{ $activity->activity }}">
               <label class="form-check-label">
-                {{ $activity->activity }}
+                {{ $activity->description }}
               </label>
             </div>
           @endforeach
