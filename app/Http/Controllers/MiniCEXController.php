@@ -90,7 +90,7 @@ class MiniCEXController extends Controller
 
         $minicexActivities->save();
 
-        flash('MiniCEX er gemt')->success()->important();
+        flash('MiniCEX er gemt - ID. nr: ' . $minicex->id)->success()->important();
 
         return redirect('/home');
     }
