@@ -31,7 +31,11 @@ class HomeController extends Controller
     public function index()
     {
         $departments = Department::where('active', '=', '1')->get();
-        $supervisors = Supervisor::where('department_id', '=', '1')->get();
+        
+        $supervisors = Supervisor::where('department_id', '=', '1')
+        ->where('active', '=', '1')
+        ->get();
+
         $activities = Activity::all();
         $complaints = PrimaryPain::all();
         $diagnoses = Diagnosis::all();
@@ -62,7 +66,9 @@ class HomeController extends Controller
 
     public function getSupervisors($id)
     {
-        $supervisors = Supervisor::where('department_id', $id)->pluck('name', 'id');
+        $supervisors = Supervisor::where('department_id', $id)
+        ->where('active', '=', '1')
+        ->pluck('name', 'id');
 
         return json_encode($supervisors);
     }
