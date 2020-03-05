@@ -36,7 +36,7 @@
 
           @foreach ($activities as $activity)
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="activities[]" value="{{ $activity->activity }}">
+              <input class="form-check-input" type="checkbox" name="activities[]" value="{{ $activity->id }}">
               <label class="form-check-label">
                 {{ $activity->description }}
               </label>
