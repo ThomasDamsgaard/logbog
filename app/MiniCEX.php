@@ -86,12 +86,4 @@ class MiniCEX extends Model
     {
         return $this->hasOne('App\ClinicalPresentation', 'mini_c_e_x_e_s_id');
     }
-
-    /**
-    * Get the feedback associated with the minicex.
-    */
-    public function minicexActivities()
-    {
-        return $this->hasMany('App\MiniCEXActivity');
-    }
 }

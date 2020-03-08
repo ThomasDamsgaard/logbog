@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\MiniCEX;
 use App\Feedback;
-use App\MiniCEXActivity;
 use App\ClinicalPresentation;
 use Carbon\Carbon;
 
@@ -82,13 +81,6 @@ class MiniCEXController extends Controller
         $feedback->grade7 = $studentRating[6];
 
         $feedback->save();
-
-        $minicexActivities = new MiniCEXActivity();
-
-        $minicexActivities->mini_c_e_x_e_s_id = $minicex->id;
-        $minicexActivities->activities = $request->activities;
-
-        $minicexActivities->save();
 
         flash('MiniCEX er gemt - ID. nr: ' . $minicex->id)->success()->important();
 
