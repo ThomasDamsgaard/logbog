@@ -62,7 +62,7 @@ class ActivityController extends Controller
         // $data3  = array(0, 6, 9, 12, 15);
 
         $minicexes = MiniCEX::where('user_id', Auth::id())
-        ->orderBy('created_at', 'desc')
+        ->orderBy('date', 'desc')
         ->simplePaginate(8);
 
         return view('activity', compact('minicexes'));
