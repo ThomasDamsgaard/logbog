@@ -15,6 +15,7 @@ class CreateTeamsTable extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->tinyInteger('active')->nullable();
             $table->timestamp('b_start')->nullable();
             $table->timestamp('b_end')->nullable();

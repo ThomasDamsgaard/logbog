@@ -141,7 +141,7 @@
               <div class="col-sm-4 mb-3 mb-sm-0">
                 <select class="form-control" name="id">
                   @foreach ($teams as $team)
-                    <option value="{{ $team->id }}">{{ $team->b_start->formatLocalized('%b %Y') }}</option>
+                    <option value="{{ $team->id }}">{{ $team->name }}</option>
                   @endforeach
                 </select>
               </div>
