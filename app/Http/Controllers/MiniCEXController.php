@@ -35,7 +35,7 @@ class MiniCEXController extends Controller
 
         $minicex = new MiniCEX;
 
-        $minicex->date = Carbon::now();
+        $minicex->date = $request->date;
         $minicex->user_id = Auth::id();
         $minicex->supervisor_id = $request->supervisor;
         $minicex->department_id = $department[0];

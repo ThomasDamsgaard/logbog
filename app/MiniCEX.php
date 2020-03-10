@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class MiniCEX extends Model
 {
@@ -85,5 +86,10 @@ class MiniCEX extends Model
     public function clinical()
     {
         return $this->hasOne('App\ClinicalPresentation', 'mini_c_e_x_e_s_id');
+    }
+
+    public function setDateAttribute($date)
+    {
+        $this->attributes['date'] = Carbon::createFromFormat('d-m-Y', $date);
     }
 }
