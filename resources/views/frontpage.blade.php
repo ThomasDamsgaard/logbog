@@ -8,7 +8,7 @@
         @csrf
 
         <div class="text-center mb-4">
-          <h1 class="h3">Registrer dine patienter</h1>
+          <h1 class="h3">Registrer dine MiniCEX</h1>
         </div>
 
         <div class="form-group mb-4">
