@@ -15,8 +15,8 @@ class CreateClinicalPresentationsTable extends Migration
     {
         Schema::create('clinical_presentations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->nullable();
-            $table->integer('department_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->unsignedBigInteger('mini_c_e_x_e_s_id');
             $table->integer('age')->nullable();
             $table->integer('sex')->nullable();
@@ -26,6 +26,8 @@ class CreateClinicalPresentationsTable extends Migration
             $table->timestamps();
 
             $table->foreign('mini_c_e_x_e_s_id')->references('id')->on('mini_c_e_x_e_s')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 

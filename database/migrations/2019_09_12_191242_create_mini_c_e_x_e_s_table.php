@@ -16,9 +16,9 @@ class CreateMiniCEXESTable extends Migration
         Schema::create('mini_c_e_x_e_s', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamp('date')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('supervisor_id')->nullable();
-            $table->integer('department_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('supervisor_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->string('activities')->nullable();
             $table->tinyInteger('grade1')->nullable();
             $table->tinyInteger('grade2')->nullable();
@@ -30,6 +30,10 @@ class CreateMiniCEXESTable extends Migration
             $table->tinyInteger('grade8')->nullable();
             $table->tinyInteger('grade9')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('supervisor_id')->references('id')->on('supervisors');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 
@@ -42,5 +46,4 @@ class CreateMiniCEXESTable extends Migration
     {
         Schema::dropIfExists('mini_c_e_x_e_s');
     }
-
 }

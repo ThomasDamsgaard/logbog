@@ -23,6 +23,7 @@ Route::post('/home/update/team', 'HomeController@update')->name('user.update');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/activity', 'ActivityController@index')->name('activity');
 Route::get('/inflict', 'InflictController@index')->name('inflict.index');
+
 // MiniCEX
 // Route::get('/minicex', 'MiniCEXController@index')->name('minicex.index');
 Route::get('/minicex/{minicex}', 'MiniCEXController@show')->name('minicex.show');
