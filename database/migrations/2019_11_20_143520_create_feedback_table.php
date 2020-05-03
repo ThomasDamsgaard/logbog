@@ -15,7 +15,7 @@ class CreateFeedbackTable extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('mini_c_e_x_e_s_id')->nullable();
+            $table->unsignedBigInteger('mini_c_e_x_e_s_id');
             $table->timestamp('date')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('supervisor_id')->nullable();
@@ -28,6 +28,8 @@ class CreateFeedbackTable extends Migration
             $table->tinyInteger('grade6')->nullable();
             $table->tinyInteger('grade7')->nullable();
             $table->timestamps();
+
+            $table->foreign('mini_c_e_x_e_s_id')->references('id')->on('mini_c_e_x_e_s')->onDelete('cascade');
         });
     }
 
