@@ -17,9 +17,9 @@ class CreateFeedbackTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('mini_c_e_x_e_s_id');
             $table->timestamp('date')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('supervisor_id')->nullable();
-            $table->integer('department_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('supervisor_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->tinyInteger('grade1')->nullable();
             $table->tinyInteger('grade2')->nullable();
             $table->tinyInteger('grade3')->nullable();
@@ -29,7 +29,10 @@ class CreateFeedbackTable extends Migration
             $table->tinyInteger('grade7')->nullable();
             $table->timestamps();
 
-            $table->foreign('mini_c_e_x_e_s_id')->references('id')->on('mini_c_e_x_e_s')->onDelete('cascade');
+            $table->foreign('mini_c_e_x_e_s_id')->references('id')->on('mini_c_e_x_e_s');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('supervisor_id')->references('id')->on('supervisors');
+            $table->foreign('department_id')->references('id')->on('departments');
         });
     }
 
