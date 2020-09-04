@@ -39,7 +39,7 @@ class MiniCEXController extends Controller
         $minicex->user_id = Auth::id();
         $minicex->supervisor_id = $request->supervisor;
         $minicex->department_id = $department[0];
-        $minicex->activities = $request->activities;
+        $minicex->activities = $request->activities ?? [];
         $minicex->grade1 = $supervisorRating[0];
         $minicex->grade2 = $supervisorRating[1];
         $minicex->grade3 = $supervisorRating[2];
